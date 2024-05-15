@@ -22,6 +22,18 @@ module.exports = {
     fontFamily: {
       'antonio': 'Antonio',
       'spartan': 'Spartan'
+    },
+    fontSize: {
+      'xs': '11px',
+      'sm': '12px',
+      'base': '14px',
+      'lg': '40px',
+      'xl': '80px'
+    },
+    letterSpacing: {
+      'tight': '-1.5px',
+      'wide': '1px',
+      'wider': '2.6px'
     }
   },
   plugins: [],

@@ -2,3 +2,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+  width: 100%;
+  min-width: 320px;
+}
+
+.h1{
+  @apply text-xl font-antonio font-medium text-white;
+}
+
+.h2{
+  @apply text-lg font-antonio font-medium tracking-tight text-white;
+}
+
+.h3{
+  @apply text-sm font-spartan font-bold tracking-wider leading-6 text-white;
+}
+
+.h4{
+  @apply text-xs font-spartan font-bold tracking-wide  leading-6 text-white;
+}
+
+.body{
+  @apply text-sm font-spartan font-normal leading-6 text-start text-white;
+}
+
+.btn{
+  @apply border border-white h3;
+}
+
+.btn-active{
+  @apply bg-blue-green h3;
+}
+
+.btn-hover{
+  @apply bg-dark-grey h3;
+}
