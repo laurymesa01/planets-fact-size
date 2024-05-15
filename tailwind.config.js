@@ -22,7 +22,7 @@ module.exports = {
     },
     fontFamily: {
       'antonio': 'Antonio',
-      'spartan': 'Spartan'
+      'spartan': 'League Spartan'
     },
     fontSize: {
       'xs': '11px',

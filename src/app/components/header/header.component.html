@@ -7,10 +7,11 @@
         </svg>
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
+      <ul class="flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-6 rtl:space-x-reverse md:mt-0">
         @for (planet of planets(); track $index) {
           <li>
-            <a href="#" class="block py-2 px-3 h4" aria-current="page">{{planet | uppercase}}</a>
+            <div class="bg-blue-green h-1 hidden"></div>
+            <a href="#" class="block py-2 px-3 h4" aria-current="page">{{planet.name| uppercase}}</a>
           </li>
         }
       </ul>
