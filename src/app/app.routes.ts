@@ -6,6 +6,10 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      {
+        path:'planet/:name',
+        loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent)
+      }
     ]
   }
 ];
