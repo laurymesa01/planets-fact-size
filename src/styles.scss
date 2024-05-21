@@ -5,15 +5,16 @@
 
 body{
   width: 100%;
+  height: 100%;
   min-width: 320px;
 }
 
 .h1{
-  @apply text-8xl font-antonio font-medium text-white;
+  @apply text-4xl lg:text-8xl font-antonio font-medium text-white;
 }
 
 .h2{
-  @apply text-4xl font-antonio font-medium tracking-tighter text-white;
+  @apply text-lg md:text-xl lg:text-4xl font-antonio font-medium tracking-tighter text-white;
 }
 
 .h3{
@@ -25,15 +26,15 @@ body{
 }
 
 .body{
-  @apply text-sm font-spartan font-normal leading-6 text-start text-white;
+  @apply text-sm font-spartan font-normal leading-6 text-white;
 }
 
 .btn{
-  @apply border border-white h3;
+  @apply border border-white border-opacity-25 py-2 h3;
 }
 
 .btn-active{
-  @apply bg-blue-green h3;
+  @apply bg-blue-green h3 ;
 }
 
 .btn-hover{

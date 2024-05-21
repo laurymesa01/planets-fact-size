@@ -8,7 +8,21 @@ export const routes: Routes = [
     children: [
       {
         path:'planet/:name',
-        loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent)
+        loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent),
+        children: [
+          {
+            path: 'overview',
+            loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent),
+          },
+          {
+            path: 'structure',
+            loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent)
+          },
+          {
+            path: 'surface',
+            loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent)
+          },
+        ]
       }
     ]
   }
