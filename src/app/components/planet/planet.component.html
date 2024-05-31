@@ -4,7 +4,7 @@
       <li>
         <a
           routerLink="overview"
-          routerLinkActive="border-b border-blue-green"
+          routerLinkActive="border-b border-[planet.name]"
           [routerLinkActiveOptions]="{'exact': true}"
           class="block">
           {{'Overview' | uppercase}}
@@ -13,7 +13,7 @@
       <li class="font-bold font-spartan">
         <a
           routerLink="structure"
-          routerLinkActive="border-b border-blue-green"
+          routerLinkActive="border-b border-[planet.name]"
           class="h-full">
           {{'Structure' | uppercase}}
         </a>
@@ -21,7 +21,7 @@
       <li class="font-bold font-spartan">
         <a
           routerLink="surface"
-          routerLinkActive="border-b border-blue-green"
+          routerLinkActive="border-b border-[planet.name]"
           class="h-full">
           {{'Surface' | uppercase}}
         </a>
@@ -29,18 +29,28 @@
     </ul>
   </div>
 
-  <div class="px-6 md:px-10 lg:py-32 xl:px-32">
+  <div class="px-6 mt-16 md:px-10 lg:py-32 xl:px-32">
     <div class="lg:flex">
-      <div class="flex justify-center py-24 lg:w-1/2">
-        <img [src]="planet()!.images.planet" alt="planet()!.name" class="bg-center h-24 w-24 md:h-32 md:w-32 lg:h-64 lg:w-64">
+      <div class="flex justify-center lg:w-1/2">
+        <img [src]="img" alt="planet().name" class="bg-center">
       </div>
-      <div class="w-full flex md:flex-row lg:flex-col lg:w-1/2 xl:ml-64 xl:pl-20">
+      <div class="w-full mt-12 flex md:flex-row lg:flex-col lg:mt-0 lg:justify-center lg:w-1/2 lg:ml-32 xl:ml-64 xl:pl-20">
         <div class="md:mr-10 md:w-1/2 lg:w-full">
-          <h1 class="h1 text-center md:text-start">{{planet()!.name | uppercase}}</h1>
-          <p class="body mt-4 text-center md:text-start">{{planet()!.overview.content}}</p>
+          <h1 class="h1 text-center md:text-start">{{planet().name | uppercase}}</h1>
+          <p class="body mt-4 text-center md:text-start">
+            @if (routeActive.includes('surface')) {
+              {{planet().geology.content}}
+            }
+            @else if (routeActive.includes('structure')) {
+              {{planet().structure.content}}
+            }
+            @else {
+              {{planet().overview.content}}
+            }
+          </p>
           <p class="flex flex-row text-white text-sm items-center justify-center mt-8 md:justify-start md:pr-18 lg:pr-40">
             <span class="font-extralight">Source: </span>
-            <a [href]="planet()!.overview.source" target="_blank" class="flex flex-row items-center underline ml-2 font-bold">
+            <a [href]="source" target="_blank" class="flex flex-row items-center underline ml-2 font-bold">
               Wikipedia
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" class="ml-2">
                 <path fill="#FFF" d="M11.34.66C10.9.22 10.37 0 9.75 0h-7.5C1.63 0 1.1.22.66.66.22 1.1 0 1.63 0 2.25v7.5c0 .62.22 1.15.66 1.59.44.44.97.66 1.59.66h7.5c.62 0 1.15-.22 1.59-.66.44-.44.66-.97.66-1.59v-7.5c0-.62-.22-1.15-.66-1.59zM10 6.25a.467.467 0 01-.305.46.544.544 0 01-.195.04.465.465 0 01-.352-.149L8.023 5.476 3.852 9.648a.481.481 0 01-.352.149.48.48 0 01-.352-.149l-.796-.797a.48.48 0 01-.149-.351.48.48 0 01.149-.352l4.172-4.172-1.125-1.125c-.162-.15-.198-.333-.11-.546A.467.467 0 015.75 2H9.5c.135 0 .253.05.352.148A.48.48 0 0110 2.5v3.75z" opacity=".5"/>
@@ -51,21 +61,21 @@
         <div class="hidden md:w-1/2 md:flex md:flex-col md:items-end md:justify-center md:space-y-2 lg:mt-8  lg:w-full lg:items-start">
           <button
               routerLink="overview"
-              routerLinkActive="btn-active"
               [routerLinkActiveOptions]="{'exact': true}"
-              class="btn text-start px-4 hover:bg-dark-grey">
+              class="btn text-start px-4"
+              [routerLinkActive]="getButtonColorByPlanet(planet().name)">
               {{'Overview' | uppercase}}
           </button>
           <button
               routerLink="structure"
-              routerLinkActive="btn-active"
-              class="btn text-start px-4 hover:bg-dark-grey">
+              class="btn text-start px-4"
+              [routerLinkActive]="getButtonColorByPlanet(planet().name)">
               {{'Structure' | uppercase}}
           </button>
           <button
               routerLink="surface"
-              routerLinkActive="btn-active"
-              class="btn text-start px-4 hover:bg-dark-grey">
+              class="btn text-start px-4"
+              [routerLinkActive]="getButtonColorByPlanet(planet().name)">
               {{'Surface' | uppercase}}
           </button>
         </div>
@@ -73,22 +83,22 @@
 
     </div>
 
-    <div class="w-full mt-6 pb-24 flex flex-col  space-y-2  md:flex-row md:space-y-0 md:space-x-2">
+    <div class="w-full mt-24 pb-24 flex flex-col  space-y-2  md:flex-row md:space-y-0 md:space-x-2">
       <div class=" flex w-full justify-between items-center px-4 py-2 border border-white border-opacity-20 md:flex-col md:items-start">
         <h4 class="h4">{{'Rotation time' | uppercase}}</h4>
-        <h2 class="h2">{{planet()?.rotation}}</h2>
+        <h2 class="h2">{{planet().rotation}}</h2>
       </div>
       <div class="flex w-full justify-between items-center px-4 py-2 border border-white border-opacity-20 md:flex-col md:items-start">
         <h4 class="h4">{{'Revolution time' | uppercase}}</h4>
-        <h2 class="h2">{{planet()?.revolution}}</h2>
+        <h2 class="h2">{{planet().revolution}}</h2>
       </div>
       <div class="flex w-full justify-between items-center px-4 py-2 border border-white border-opacity-20 md:flex-col md:items-start">
         <h4 class="h4">{{'Radius' | uppercase}}</h4>
-        <h2 class="h2">{{planet()?.radius}}</h2>
+        <h2 class="h2">{{planet().radius}}</h2>
       </div>
       <div class="flex w-full justify-between items-center px-4 py-2 border border-white border-opacity-20 md:flex-col md:items-start">
         <h4 class="h4">{{'Average Temp' | uppercase}}</h4>
-        <h2 class="h2">{{planet()?.temperature}}</h2>
+        <h2 class="h2">{{planet().temperature}}</h2>
       </div>
     </div>
   </div>

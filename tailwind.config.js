@@ -12,14 +12,14 @@ module.exports = {
       'dark-grey': '#38384F',
       'grey': '#838391',
       'light-grey': '#979797',
-      'blue-green': '#419EBB',
-      'yellow-mustard': '#EDA249',
-      'dark-violet': '#6f2ed6',
-      'light-orange': '#D14C32',
-      'red': '#D83A34',
-      'orange': '#CD5120',
-      'green': '#1ec2a4',
-      'blue': '#2d68f0'
+      'mercury': '#419EBB',
+      'venus':  '#EDA249',
+      'earth':  '#6f2ed6',
+      'mars' : '#D14C32',
+      'jupiter': '#D83A34',
+      'saturn' :'#CD5120',
+      'uranus' :'#1ec2a4',
+      'neptune': '#2d68f0'
     },
     fontFamily: {
       'antonio': 'Antonio',

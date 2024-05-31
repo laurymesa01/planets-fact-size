@@ -30,13 +30,5 @@ body{
 }
 
 .btn{
-  @apply border border-white border-opacity-25 py-2 h3;
-}
-
-.btn-active{
-  @apply bg-blue-green h3 ;
-}
-
-.btn-hover{
-  @apply bg-dark-grey h3;
+  @apply border border-white border-opacity-25 py-2 h3 hover:bg-dark-grey h3;
 }
