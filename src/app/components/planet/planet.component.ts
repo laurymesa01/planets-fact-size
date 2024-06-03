@@ -88,12 +88,12 @@ export class PlanetComponent implements OnInit{
     else{
       this.img = this.planet().images.planet;
       this.source = this.planet().overview.source;
+
     }
   }
 
-  getButtonColorByPlanet(planetName: string){
-    const c = this.colors_service.getColorButtonByPlanet(planetName);
-    console.log('color',c);
-    return c;
+  get buttonColorByPlanet(){
+    console.log('HOLA');
+    return this.colors_service.getColorButtonByPlanet(this.planet().name);
   }
 }

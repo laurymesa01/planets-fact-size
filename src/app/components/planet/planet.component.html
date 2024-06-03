@@ -61,21 +61,20 @@
         <div class="hidden md:w-1/2 md:flex md:flex-col md:items-end md:justify-center md:space-y-2 lg:mt-8  lg:w-full lg:items-start">
           <button
               routerLink="overview"
-              [routerLinkActiveOptions]="{'exact': true}"
               class="btn text-start px-4"
-              [routerLinkActive]="getButtonColorByPlanet(planet().name)">
+              [routerLinkActive]="buttonColorByPlanet">
               {{'Overview' | uppercase}}
           </button>
           <button
               routerLink="structure"
               class="btn text-start px-4"
-              [routerLinkActive]="getButtonColorByPlanet(planet().name)">
+              [routerLinkActive]="buttonColorByPlanet">
               {{'Structure' | uppercase}}
           </button>
           <button
               routerLink="surface"
               class="btn text-start px-4"
-              [routerLinkActive]="getButtonColorByPlanet(planet().name)">
+              [routerLinkActive]="buttonColorByPlanet">
               {{'Surface' | uppercase}}
           </button>
         </div>

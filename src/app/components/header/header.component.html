@@ -11,8 +11,8 @@
         @for (planet of planets(); track $index) {
           <li>
             <a
-              [routerLink]="['planet', planet.name]"
-              routerLinkActive="border-t border-blue-green"
+              [routerLink]="['planet', planet.name, 'overview']"
+              routerLinkActive="border-t"
               [routerLinkActiveOptions]="{'exact': true}"
               class="block py-2 px-3 h4"
               aria-current="page">
