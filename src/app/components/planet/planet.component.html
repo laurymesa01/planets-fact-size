@@ -4,7 +4,7 @@
       <li>
         <a
           routerLink="overview"
-          routerLinkActive="border-b border-[planet.name]"
+          [routerLinkActive]="buttonColorByPlanet"
           [routerLinkActiveOptions]="{'exact': true}"
           class="block">
           {{'Overview' | uppercase}}
@@ -13,7 +13,7 @@
       <li class="font-bold font-spartan">
         <a
           routerLink="structure"
-          routerLinkActive="border-b border-[planet.name]"
+          [routerLinkActive]="buttonColorByPlanet"
           class="h-full">
           {{'Structure' | uppercase}}
         </a>
@@ -21,7 +21,7 @@
       <li class="font-bold font-spartan">
         <a
           routerLink="surface"
-          routerLinkActive="border-b border-[planet.name]"
+          [routerLinkActive]="buttonColorByPlanet"
           class="h-full">
           {{'Surface' | uppercase}}
         </a>
@@ -32,21 +32,21 @@
   <div class="px-6 mt-16 md:px-10 lg:py-32 xl:px-32">
     <div class="lg:flex">
       <div class="flex justify-center lg:w-1/2">
-        <img [src]="img" alt="planet().name" class="bg-center">
+        @if (routeActive.includes('surface')) {
+          <div class="flex flex-col relative">
+            <img [src]="planet().images.planet" alt="">
+            <img [src]="img" alt="planet().name" class="bg-center h-44 w-44 absolute top-[50%] left-[30%]">
+          </div>
+        }
+        @else{
+          <img [src]="img" alt="planet().name" class="bg-center">
+        }
       </div>
       <div class="w-full mt-12 flex md:flex-row lg:flex-col lg:mt-0 lg:justify-center lg:w-1/2 lg:ml-32 xl:ml-64 xl:pl-20">
         <div class="md:mr-10 md:w-1/2 lg:w-full">
           <h1 class="h1 text-center md:text-start">{{planet().name | uppercase}}</h1>
           <p class="body mt-4 text-center md:text-start">
-            @if (routeActive.includes('surface')) {
-              {{planet().geology.content}}
-            }
-            @else if (routeActive.includes('structure')) {
-              {{planet().structure.content}}
-            }
-            @else {
-              {{planet().overview.content}}
-            }
+            {{content}}
           </p>
           <p class="flex flex-row text-white text-sm items-center justify-center mt-8 md:justify-start md:pr-18 lg:pr-40">
             <span class="font-extralight">Source: </span>
@@ -62,19 +62,22 @@
           <button
               routerLink="overview"
               class="btn text-start px-4"
-              [routerLinkActive]="buttonColorByPlanet">
+              [routerLinkActive]="buttonColorByPlanet"
+              [routerLinkActiveOptions]="{'exact': false}">
               {{'Overview' | uppercase}}
           </button>
           <button
               routerLink="structure"
               class="btn text-start px-4"
-              [routerLinkActive]="buttonColorByPlanet">
+              [routerLinkActive]="buttonColorByPlanet"
+              [routerLinkActiveOptions]="{'exact': false}">
               {{'Structure' | uppercase}}
           </button>
           <button
               routerLink="surface"
               class="btn text-start px-4"
-              [routerLinkActive]="buttonColorByPlanet">
+              [routerLinkActive]="buttonColorByPlanet"
+              [routerLinkActiveOptions]="{'exact': false}">
               {{'Surface' | uppercase}}
           </button>
         </div>

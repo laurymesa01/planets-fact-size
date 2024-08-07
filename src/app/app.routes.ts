@@ -7,9 +7,19 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'planet/Mercury',
+        pathMatch: 'prefix'
+      },
+      {
         path:'planet/:name',
         loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent),
         children: [
+          {
+            path: '',
+            redirectTo: 'overview',
+            pathMatch: 'prefix'
+          },
           {
             path: 'overview',
             loadComponent: () => import('./components/planet/planet.component').then(m => m.PlanetComponent),

@@ -46,20 +46,32 @@ export class PlanetComponent implements OnInit{
   routeActive: string = '';
   img: string = '';
   source: string = '';
+  content: string = '';
   public subscriber!: Subscription;
 
 
   constructor(private route: ActivatedRoute,
               private router: Router){
+
+
   }
 
   ngOnInit(){
     this.route.params.pipe(
-      switchMap( ( {name} ) => this.planets_service.getPlanetByName(name))
+      switchMap( ( {name} ) => {
+        if (!name) {
+          return this.planets_service.getPlanetByName('Mercury')
+        }
+        else{
+          return this.planets_service.getPlanetByName(name)
+        }
+      })
     )
     .subscribe({
       next: (planet: Planets[]) => {
         this.planet.set(planet[0]);
+        this.buttonColorByPlanet;
+        this.content = this.planet().overview.content;
         this.img = this.planet().images.planet;
         this.source = this.planet().overview.source;
       }
@@ -77,23 +89,27 @@ export class PlanetComponent implements OnInit{
   }
 
   getPropertiesByUrlSegment(url: string){
+    this.buttonColorByPlanet;
     if (url.includes('surface')) {
       this.img = this.planet().images.geology;
       this.source = this.planet().geology.source;
+      this.content = this.planet().geology.content;
+
     }
     else if(url.includes('structure')){
       this.img = this.planet().images.internal;
       this.source = this.planet().structure.source;
+      this.content = this.planet().structure.content;
+
     }
     else{
       this.img = this.planet().images.planet;
       this.source = this.planet().overview.source;
-
+      this.content = this.planet().overview.content;
     }
   }
 
   get buttonColorByPlanet(){
-    console.log('HOLA');
     return this.colors_service.getColorButtonByPlanet(this.planet().name);
   }
 }

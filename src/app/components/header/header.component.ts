@@ -3,16 +3,18 @@ import { UpperCasePipe } from "@angular/common";
 import { Planets } from '../../models/planets.model';
 import { PlanetsService } from '../../services/planets.service';
 import { RouterLinkWithHref, RouterLinkActive } from '@angular/router';
+import { MenuComponent } from "../menu/menu.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [UpperCasePipe, RouterLinkWithHref, RouterLinkActive],
+  imports: [UpperCasePipe, RouterLinkWithHref, RouterLinkActive, MenuComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
 
+  isOpenMenu: boolean = false;
   planets = signal<Planets[]>([]);
   planets_service = inject(PlanetsService);
 
@@ -22,6 +24,10 @@ export class HeaderComponent implements OnInit{
         this.planets.set(planets);
       }
     })
+  }
+
+  openMenu(){
+    this.isOpenMenu = !this.isOpenMenu;
   }
 
 }
