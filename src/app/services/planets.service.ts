@@ -8,16 +8,16 @@ import { Planets } from '../models/planets.model';
 export class PlanetsService {
 
   private http = inject(HttpClient);
-  private url = 'http://localhost:3000/planets';
+  private url = 'https://planetsapi-1.onrender.com';
 
   constructor() { }
 
   getPlanets(){
-    return this.http.get<Planets[]>(this.url);
+    return this.http.get<Planets[]>(`${this.url}/planets`);
   }
 
   getPlanetByName(name: string){
     const params = new HttpParams().set('name', name);
-    return this.http.get<Planets[]>(`${this.url}`, { params });
+    return this.http.get<Planets[]>(`${this.url}/planets`, { params });
   }
 }
