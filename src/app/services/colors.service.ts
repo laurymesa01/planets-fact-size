@@ -8,7 +8,6 @@ export class ColorsService {
   constructor() { }
 
   getColorButtonByPlanet(planetName: string){
-    const color = planetName.toLowerCase();
-    return `bg-${color}`;
+    return planetName.toLowerCase();
   }
 }

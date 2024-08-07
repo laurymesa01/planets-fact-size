@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlanetsService } from '../../services/planets.service';
 import { Planets } from '../../models/planets.model';
@@ -70,10 +70,10 @@ export class PlanetComponent implements OnInit{
     .subscribe({
       next: (planet: Planets[]) => {
         this.planet.set(planet[0]);
-        this.buttonColorByPlanet;
         this.content = this.planet().overview.content;
         this.img = this.planet().images.planet;
         this.source = this.planet().overview.source;
+        this.buttonColorByPlanet;
       }
     })
     this.getUrlSegment();
@@ -89,7 +89,6 @@ export class PlanetComponent implements OnInit{
   }
 
   getPropertiesByUrlSegment(url: string){
-    this.buttonColorByPlanet;
     if (url.includes('surface')) {
       this.img = this.planet().images.geology;
       this.source = this.planet().geology.source;
@@ -110,6 +109,11 @@ export class PlanetComponent implements OnInit{
   }
 
   get buttonColorByPlanet(){
-    return this.colors_service.getColorButtonByPlanet(this.planet().name);
+    return  `bg-${this.planet().name.toLowerCase()}`;
+    // return `bg-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
+  }
+
+  get buttonBorderByPlanet(){
+    return `decoration-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
   }
 }

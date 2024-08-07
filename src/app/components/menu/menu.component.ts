@@ -19,7 +19,7 @@ export class MenuComponent {
   @Input() planets: Planets[] = [];
 
   buttonColorByPlanet(planetName: string){
-    return this.colors_service.getColorButtonByPlanet(planetName);
+    return `bg-${this.colors_service.getColorButtonByPlanet(planetName)}`;
   }
 
 }

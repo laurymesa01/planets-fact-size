@@ -4,8 +4,9 @@
       <li>
         <a
           routerLink="overview"
-          [routerLinkActive]="buttonColorByPlanet"
+          routerLinkActive="underline decoration-2 underline-offset-[20px]"
           [routerLinkActiveOptions]="{'exact': true}"
+          [class]="buttonBorderByPlanet"
           class="block">
           {{'Overview' | uppercase}}
         </a>
@@ -13,7 +14,8 @@
       <li class="font-bold font-spartan">
         <a
           routerLink="structure"
-          [routerLinkActive]="buttonColorByPlanet"
+          routerLinkActive="underline decoration-2 underline-offset-[20px]"
+          [class]="buttonBorderByPlanet"
           class="h-full">
           {{'Structure' | uppercase}}
         </a>
@@ -21,8 +23,9 @@
       <li class="font-bold font-spartan">
         <a
           routerLink="surface"
-          [routerLinkActive]="buttonColorByPlanet"
-          class="h-full">
+          routerLinkActive="underline decoration-2 underline-offset-[20px] decoration-${buttonBorderByPlanet}"
+          [class]="buttonBorderByPlanet"
+          class="h-full ">
           {{'Surface' | uppercase}}
         </a>
       </li>
