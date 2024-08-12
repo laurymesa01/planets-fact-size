@@ -5,8 +5,7 @@
         <a
           routerLink="overview"
           routerLinkActive="underline decoration-2 underline-offset-[20px]"
-          [routerLinkActiveOptions]="{'exact': true}"
-          [class]="buttonBorderByPlanet"
+          [ngClass]="router.url.includes('overview') ? colors_service.currentBorder : {}"
           class="block">
           {{'Overview' | uppercase}}
         </a>
@@ -15,7 +14,7 @@
         <a
           routerLink="structure"
           routerLinkActive="underline decoration-2 underline-offset-[20px]"
-          [class]="buttonBorderByPlanet"
+          [ngClass]="router.url.includes('structure') ? colors_service.currentBorder : {}"
           class="h-full">
           {{'Structure' | uppercase}}
         </a>
@@ -23,8 +22,8 @@
       <li class="font-bold font-spartan">
         <a
           routerLink="surface"
-          routerLinkActive="underline decoration-2 underline-offset-[20px] decoration-${buttonBorderByPlanet}"
-          [class]="buttonBorderByPlanet"
+          routerLinkActive="underline decoration-2 underline-offset-[20px] "
+          [ngClass]="router.url.includes('surface') ? colors_service.currentBorder : {}"
           class="h-full ">
           {{'Surface' | uppercase}}
         </a>

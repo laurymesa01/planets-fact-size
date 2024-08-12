@@ -71,7 +71,6 @@ export class PlanetComponent implements OnInit{
     .subscribe({
       next: (planet: Planets[]) => {
         this.planet.set(planet[0]);
-        this.buttonColorByPlanet;
         this.content = this.planet().overview.content;
         this.img = this.planet().images.planet;
         this.source = this.planet().overview.source;
@@ -109,22 +108,22 @@ export class PlanetComponent implements OnInit{
     }
   }
 
-  get buttonColorByPlanet(){
-    let color = '';
-    // return  `bg-${this.planet().name.toLowerCase()}`;
-    switch (this.planet().name) {
-      case 'Mercury':
-        color = '#419EBB'
-        break;
-      default:
-        color = '#FFFF'
-        break;
-    }
-    return `bg-${color}`;
-    // return `bg-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
-  }
+  // get buttonColorByPlanet(){
+  //   let color = '';
+  //   // return  `bg-${this.planet().name.toLowerCase()}`;
+  //   switch (this.planet().name) {
+  //     case 'Mercury':
+  //       color = '#419EBB'
+  //       break;
+  //     default:
+  //       color = '#FFFF'
+  //       break;
+  //   }
+  //   return `bg-${color}`;
+  //   // return `bg-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
+  // }
 
-  get buttonBorderByPlanet(){
-    return `decoration-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
-  }
+  // get buttonBorderByPlanet(){
+  //   return `decoration-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
+  // }
 }
