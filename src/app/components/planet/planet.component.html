@@ -65,22 +65,19 @@
           <button
               routerLink="overview"
               class="btn text-start px-4"
-              [routerLinkActive]="buttonColorByPlanet"
-              [routerLinkActiveOptions]="{'exact': false}">
+              [ngClass]="router.url.includes('overview') ? colors_service.currentColor : {}">
               {{'Overview' | uppercase}}
           </button>
           <button
               routerLink="structure"
               class="btn text-start px-4"
-              [routerLinkActive]="buttonColorByPlanet"
-              [routerLinkActiveOptions]="{'exact': false}">
+              [ngClass]="router.url.includes('structure') ? colors_service.currentColor : {}">
               {{'Structure' | uppercase}}
           </button>
           <button
               routerLink="surface"
               class="btn text-start px-4"
-              [routerLinkActive]="buttonColorByPlanet"
-              [routerLinkActiveOptions]="{'exact': false}">
+              [ngClass]="router.url.includes('surface') ? colors_service.currentColor : {}">
               {{'Surface' | uppercase}}
           </button>
         </div>

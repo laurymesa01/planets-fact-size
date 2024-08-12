@@ -42,16 +42,17 @@ export class PlanetComponent implements OnInit{
     }
   });
   private planets_service = inject(PlanetsService);
-  private colors_service = inject(ColorsService);
+  public colors_service = inject(ColorsService);
   routeActive: string = '';
   img: string = '';
   source: string = '';
   content: string = '';
   public subscriber!: Subscription;
+  color: string = '';
 
 
   constructor(private route: ActivatedRoute,
-              private router: Router){
+              public router: Router){
 
 
   }
@@ -60,20 +61,20 @@ export class PlanetComponent implements OnInit{
     this.route.params.pipe(
       switchMap( ( {name} ) => {
         if (!name) {
-          return this.planets_service.getPlanetByName('Mercury')
+          return this.planets_service.getPlanetByName('Mercury');
         }
         else{
-          return this.planets_service.getPlanetByName(name)
+          return this.planets_service.getPlanetByName(name);
         }
       })
     )
     .subscribe({
       next: (planet: Planets[]) => {
         this.planet.set(planet[0]);
+        this.buttonColorByPlanet;
         this.content = this.planet().overview.content;
         this.img = this.planet().images.planet;
         this.source = this.planet().overview.source;
-        this.buttonColorByPlanet;
       }
     })
     this.getUrlSegment();
@@ -109,7 +110,17 @@ export class PlanetComponent implements OnInit{
   }
 
   get buttonColorByPlanet(){
-    return  `bg-${this.planet().name.toLowerCase()}`;
+    let color = '';
+    // return  `bg-${this.planet().name.toLowerCase()}`;
+    switch (this.planet().name) {
+      case 'Mercury':
+        color = '#419EBB'
+        break;
+      default:
+        color = '#FFFF'
+        break;
+    }
+    return `bg-${color}`;
     // return `bg-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
   }
 
