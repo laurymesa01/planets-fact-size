@@ -1,5 +1,5 @@
 <nav class="border-b border-light-grey border-opacity-20 ">
-  <div class="max-w-screen-3xl flex flex-wrap items-center justify-between md:justify-center lg:justify-between mx-auto px-4">
+  <div class="max-w-screen-3xl p-4 md:p-0 flex flex-wrap items-center justify-between md:justify-center lg:justify-between mx-auto md:px-4">
     <p class="text-lg text-white tracking-tight font-medium ">{{'The planets' | uppercase}}</p>
     <button data-collapse-toggle="navbar-default"
             type="button"
@@ -19,7 +19,7 @@
               [routerLink]="['planet', planet.name]"
               routerLinkActive="border-t border-t-4"
               [ngClass]="colors_service.currentBorderHeader"
-              class="block py-6 px-3 h4"
+              class="block py-4 lg:py-6 px-3 h4"
               aria-current="page">
               {{planet.name| uppercase}}
             </a>

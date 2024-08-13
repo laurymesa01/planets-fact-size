@@ -8,7 +8,7 @@ import { Planets } from '../models/planets.model';
 export class PlanetsService {
 
   private http = inject(HttpClient);
-  private url = 'https://planetsapi-1.onrender.com';
+  private url = 'http://localhost:3000';
 
   constructor() { }
 

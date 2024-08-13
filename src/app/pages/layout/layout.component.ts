@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component } from '@angular/core';
 import { HeaderComponent } from "../../components/header/header.component";
 import { RouterOutlet } from '@angular/router';
 
@@ -9,6 +9,11 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
-export class LayoutComponent {
+export class LayoutComponent implements AfterContentChecked{
 
+  constructor(private changeDetector: ChangeDetectorRef,){ }
+
+  ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
+  }
 }

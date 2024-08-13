@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlanetsService } from '../../services/planets.service';
 import { Planets } from '../../models/planets.model';
@@ -52,8 +52,7 @@ export class PlanetComponent implements OnInit{
 
 
   constructor(private route: ActivatedRoute,
-              public router: Router){
-
+              public router: Router,){
 
   }
 
@@ -78,6 +77,7 @@ export class PlanetComponent implements OnInit{
     })
     this.getUrlSegment();
   }
+
 
   getUrlSegment(){
     this.subscriber = this.router.events.pipe(
@@ -108,22 +108,4 @@ export class PlanetComponent implements OnInit{
     }
   }
 
-  // get buttonColorByPlanet(){
-  //   let color = '';
-  //   // return  `bg-${this.planet().name.toLowerCase()}`;
-  //   switch (this.planet().name) {
-  //     case 'Mercury':
-  //       color = '#419EBB'
-  //       break;
-  //     default:
-  //       color = '#FFFF'
-  //       break;
-  //   }
-  //   return `bg-${color}`;
-  //   // return `bg-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
-  // }
-
-  // get buttonBorderByPlanet(){
-  //   return `decoration-${this.colors_service.getColorButtonByPlanet(this.planet().name)}` ;
-  // }
 }

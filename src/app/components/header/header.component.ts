@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
 import { UpperCasePipe } from "@angular/common";
 import { Planets } from '../../models/planets.model';
 import { PlanetsService } from '../../services/planets.service';
@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit{
   planets_service = inject(PlanetsService);
   public colors_service = inject(ColorsService);
 
+  constructor(){}
+
   ngOnInit(){
     this.planets_service.getPlanets().subscribe({
       next: (planets) => {
@@ -29,6 +31,7 @@ export class HeaderComponent implements OnInit{
       }
     })
   }
+
 
   openMenu(){
     this.isOpenMenu = !this.isOpenMenu;

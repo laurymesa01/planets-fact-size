@@ -23,7 +23,6 @@ export class ColorsService {
       this.currentColor = 'bg-mercury';
       this.currentBorder = 'decoration-mercury';
       this.currentBorderHeader = 'border-mercury';
-
     }
     else if(url.includes('Venus')){
       this.currentColor = 'bg-venus';
@@ -64,13 +63,11 @@ export class ColorsService {
       this.currentColor = 'bg-neptune';
       this.currentBorder = 'decoration-neptune';
       this.currentBorderHeader = 'border-neptune';
-
     }
     else{
       this.currentColor = 'bg-mercury';
       this.currentBorder = 'decoration-mercury';
       this.currentBorderHeader = 'border-mercury';
-
     }
     // this.currentColor = `bg-${planetName.toLowerCase()}`;
   }
